@@ -1,0 +1,19 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: final-project-pipeline-run-
+spec:
+  pipelineRef:
+    name: final-project-pipeline
+  params:
+    - name: repo-url
+      value: "https://github.com/boboqulovsherdiyor0102-spec/intermediate_webdev_finalproject"
+  workspaces:
+    - name: pipeline-workspace
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
